@@ -250,3 +250,68 @@ background: '/img/posts/20250223/ntsu-activity-photo.jpg'
 <span class="caption text-muted">感謝國立體育大學體育推廣學系的老師邀請、參與這場活動的學生，以及共同籌備這場活動的工作夥伴們</span>
 
 
+
+
+
+
+
+
+
+
+
+<!-- HTML 程式碼 -->
+<div class="progress p1">
+<p><br><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 閱讀進度(%)</p>
+</div>
+
+<!-- CSS 程式碼 -->
+<style>
+  .main {
+    position: relative;            /* 讓內容 sticky 可以有定位參考 */
+    box-sizing: border-box;
+    border:1px solid #000;
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+    overflow: hidden scroll;       /* 隱藏超出範圍內容，加入 y 方向捲軸 */
+  }
+  .contain {height: 1000px;}       /* 讓頁面捲軸長一點 */
+
+  .progress {
+    position: fixed;              /* 黏貼定位，如果放在頁面中改為 fixed */
+    left: 20px;
+    animation: oxxo forwards;      /* 動畫結束後會停留在 100% 進度 */
+    animation-timeline: scroll();  /* 使用捲軸控制動畫進度 */
+  }
+  /* 百分比自訂屬性 */
+  @property --x {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: 0%;
+  }
+  /* 角度自訂屬性 */
+  @property --deg {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 20deg;
+  }
+  .p1 {
+    top: 180px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #000;
+    border-radius: 50%;    
+    background: conic-gradient(#ffa64d var(--deg),#fff var(--deg)); /* 使用自訂屬性 */
+  }
+  /* 從動畫進度改變自訂屬性 */
+  @keyframes oxxo {
+    0% {
+      --x : 0%;
+      --deg: 0deg;
+    }
+    100% {
+      --x : 100%;
+      --deg: 360deg;
+    }
+  }
+</style>
